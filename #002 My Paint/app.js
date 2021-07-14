@@ -4,13 +4,18 @@ const colors = document.getElementsByClassName("jsColor");
 const range = document.getElementById("jsRange");
 const mode = document.getElementById("jsMode");
 
-canvas.width = 700;
-canvas.height = 700;
+const INITIAL_COLOR= "#2c2c2c";
+const CANVAS_SIZE = 700;
 
-ctx.strokeStyle = "#2c2c2c";
+canvas.width = CANVAS_SIZE;
+canvas.height = CANVAS_SIZE;
+
+ctx.strokeStyle = INITIAL_COLOR;
+ctx.fillStyle = INITIAL_COLOR;
 ctx.lineWidth = 2.5;
 
 let painting = false;
+let filling = false;
 
 function stopPainting(){
     painting = false;
@@ -39,6 +44,7 @@ function onMouseDown(event){
 
 function handleColorClick(event){
     ctx.strokeStyle = event.target.style.backgroundColor;
+    ctx.fillStyle = event.target.style.backgroundColor;
 }
 
 function handleRangeChange(event){
@@ -55,6 +61,13 @@ function handleModeClick(event){
     }
 }
 
+function handleCanvasClick(){
+    if(filling)
+    {
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+}
+
 // client : 윈도우 전체에서의 마우스 값
 // offset : 특정 범위에서의 마우스 값
 if(canvas){
@@ -62,6 +75,7 @@ if(canvas){
     canvas.addEventListener("mousedown", startPainting);
     canvas.addEventListener("mouseup", stopPainting);
     canvas.addEventListener("mouseleave", stopPainting);
+    canvas.addEventListener("click", handleCanvasClick);
 }
 
 Array.from(colors).forEach(color => color.addEventListener("click", handleColorClick));
