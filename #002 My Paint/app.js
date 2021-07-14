@@ -1,6 +1,8 @@
 const canvas = document.getElementById("jsCanvas");
 const ctx = canvas.getContext("2d");
 const colors = document.getElementsByClassName("jsColor");
+const range = document.getElementById("jsRange");
+const mode = document.getElementById("jsMode");
 
 canvas.width = 700;
 canvas.height = 700;
@@ -36,9 +38,21 @@ function onMouseDown(event){
 }
 
 function handleColorClick(event){
-    const color = event.target.style.backgroundColor;
-    console.log(color);
-    ctx.strokeStyle = color;
+    ctx.strokeStyle = event.target.style.backgroundColor;
+}
+
+function handleRangeChange(event){
+    ctx.lineWidth = event.target.value;
+}
+
+function handleModeClick(event){
+    if(filling === true){
+        filling = false;
+        mode.innerText = "Fill";
+    } else {
+        filling = true;
+        mode.innerText = "Paint";
+    }
 }
 
 // client : 윈도우 전체에서의 마우스 값
@@ -51,3 +65,11 @@ if(canvas){
 }
 
 Array.from(colors).forEach(color => color.addEventListener("click", handleColorClick));
+
+if(range) {
+    range.addEventListener("input", handleRangeChange);
+}
+
+if(mode){
+    mode.addEventListener("click", handleModeClick);
+}
