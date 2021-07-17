@@ -21,7 +21,7 @@ let painting = false;
 let filling = false;
 
 function stopPainting(){
-    painting = false;
+    painting = false; 
 }
 
 function startPainting(){
