@@ -5,17 +5,28 @@ function Food({fav}){
 }
 
 const whoILike = [
-    { name : "Sarah",
-    value : 21},
-    { name : "Dohun",
-    value : 16},
-    { name : "Kumho",
-    value : 31},
-    { name : "JiHye",
-    value : 25},];
+    { 
+      key : 1,
+      name : "Sarah",
+      value : 21
+    },
+    { 
+      key : 2,
+      name : "Dohun",
+      value : 16},
+    { 
+      key : 3,
+      name : "Kumho",
+      value : 31
+    },
+    { 
+      key : 4,
+      name : "JiHye",
+      value : 25
+    },];
 
 function renderWho(who) {
-  return <Food fav = {who.name }/>;
+  return <Food key = {who.key} fav = {who.name }/>;
 }
 
 function App() {
