@@ -14,10 +14,14 @@ const whoILike = [
     { name : "JiHye",
     value : 25},];
 
+function renderWho(who) {
+  return <Food fav = {who.name }/>;
+}
+
 function App() {
   return (
     <div>
-      {whoILike.map(who => (<Food fav = {who.name } />))}
+      {whoILike.map(renderWho)}
     </div>
   );
 }
