@@ -5,13 +5,25 @@ class App extends React.Component{
   state = {
     count: 0
   };
+
+  //setState는 render함수를 호출한다.
   add = () => {
-    console.log("add");
+    this.setState(current => ({count : current.count + 1}));
   };
   minus = () => {
-    console.log("minus");
+    this.setState(current => ({count : current.count - 1}));
   };
+  componentDidMount(){
+    console.log("component rendered");
+  }
+  componentDidUpdate(){
+    console.log("updated");
+  }
+  componentWillUnmount(){
+    console.log("good bye");
+  }
   render() {
+    console.log("redering..");
     return (
       <div>
         <h1>The number is: {this.state.count}</h1>
