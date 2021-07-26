@@ -31,7 +31,7 @@ class App extends React.Component{
         {isLoading 
           ?(
             <div className="loader">
-              <span className="loader__test">Loading...</span>
+              <span className="loader__text">Loading...</span>
             </div>
           )
           : (
